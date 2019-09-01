@@ -1,0 +1,47 @@
+.mainButton {
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 4%;
+  padding: 0.2rem 0.3rem !important;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  border-radius: 5px;
+}
+
+
+.btn-primary {
+  margin-top: 10px;
+  box-shadow: none !important;
+  background-color: cornflowerblue !important;
+  border: 1px solid black !important;
+
+  &:hover {
+    background-color: deepskyblue !important;
+  }
+}
+
+.btn-secondary {
+  margin-top: 10px;
+  box-shadow: none !important;
+  background-color: white !important;
+  border: 1px solid black !important;
+  color: black;
+
+  &:hover {
+    border: 1px solid deepskyblue !important;
+  }
+
+  &:focus,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    background-color: cornflowerblue !important;
+    color: white;
+  }
+}
+
+.btn {
+  &:hover {
+    box-shadow: none !important;
+  }
+}
