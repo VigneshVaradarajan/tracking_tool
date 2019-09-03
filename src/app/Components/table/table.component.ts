@@ -18,6 +18,9 @@ import { DataService } from "../../data.service";
 })
 export class TableComponent implements OnInit {
 
+  public show_alert: boolean = false;
+  public message: string;
+
   public totalNumOfRows: number;
   columnDefs;
   rowData;
@@ -185,17 +188,7 @@ export class TableComponent implements OnInit {
       cellRendererFramework: EditComponentComponent,
       colId: "edit"
     }
-    // let initialColumn1 = {
-    //   headerName: '',
-    //   field: 'check',
-    //   headerCheckboxSelection: true,
-    //   checkboxSelection: true,
-    //   width: 90,
-    //   editable: false,
-    //   colId: 'check'
-    // }
     columnDefinitions.push(initialColumn)
-    // columnDefinitions.push(initialColumn1)
 
     data.forEach(element => {
       let mappedColumn = {
@@ -233,7 +226,7 @@ export class TableComponent implements OnInit {
         arr['Contact Number'] = name['phone']
         arr['Contact Email'] = name['email']
         arr['Headquarters'] = name['headquaters']
-        arr['Revenue Costs'] = name['revenue_costs']
+        arr['Revenue Cost'] = name['revenue_costs']
         arr['Gross Profit'] = name['profit']
         arr['Status'] = name['status']
         arr['Acquisition Year'] = name['acquisitionYear']
@@ -253,8 +246,10 @@ export class TableComponent implements OnInit {
   postDataToServe(da) {
     this.http.post("http://localhost:3000/details/", da
     ).subscribe(response => {
-      // console.log(response)
+      this.message = "Succesfully added";
+      this.show_alert = true;
     })
+
   }
 
   search() {
@@ -264,6 +259,11 @@ export class TableComponent implements OnInit {
     catch (e) {
       console.log(e);
     }
+  }
+
+  /* Closing the alert shown for Add and Edit */
+  closeAlert() {
+    this.show_alert = false;
   }
 
   popoverClose() {

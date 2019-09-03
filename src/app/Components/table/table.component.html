@@ -34,3 +34,8 @@
   [rowData]="rowData" [defaultColDef]="defaultColDef" (gridReady)="onGridReady($event)" [columnDefs]="columnDefs"
   [gridOptions]="gridOptions" [pagination]="true" [paginationPageSize]="paginationPageSize">
 </ag-grid-angular>
+
+<!-- Alert -->
+<alert type="success" *ngIf="show_alert" close="closeAlert()" dismissOnTimeout="3000">
+  <strong>{{message}}</strong>
+</alert>

@@ -21,7 +21,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponentComponent } from './Components/edit-component/edit-component.component';
-// import { SimpleModalModule } from 'ngx-simple-modal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { StatusComponent } from './Components/status/status.component';
@@ -34,6 +33,8 @@ import { HeaderComponent } from './Components/header/header.component';
 import { AnalyticsComponent } from './Components/analytics/analytics.component';
 import { ChartsModule } from 'ng2-charts';
 import { ProfitComponent } from './Components/analytics/profit/profit.component';
+import { ConfirmComponent } from './Components/confirm/confirm.component';
+import { AlertModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ProfitComponent } from './Components/analytics/profit/profit.component'
     HeaderComponent,
     AnalyticsComponent,
     ProfitComponent,
+    ConfirmComponent
     // DialogComponent
   ],
   imports: [
@@ -71,13 +73,13 @@ import { ProfitComponent } from './Components/analytics/profit/profit.component'
     MatMenuModule,
     MatCheckboxModule,
     MatCardModule,
-    // SimpleModalModule.forRoot({ container: "modal-container" }),
     FontAwesomeModule,
     PopupModule,
     AngularSplitModule.forRoot(),
+    AlertModule.forRoot(),
     ChartsModule
   ],
-  entryComponents: [OverlayComponent],
+  entryComponents: [OverlayComponent, ConfirmComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

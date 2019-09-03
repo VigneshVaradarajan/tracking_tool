@@ -4,6 +4,8 @@ import { OverlayComponent } from '../overlay/overlay.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import 'rxjs';
 import { filter } from 'rxjs/operators';
+import { ConfirmComponent } from '../confirm/confirm.component';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-component',
@@ -11,6 +13,10 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./edit-component.component.scss']
 })
 export class EditComponentComponent {
+  public show_alert: boolean = false;
+  public message: string;
+
+  modalRef: NgbModalRef;
 
   private params: any;
   overlayDialogRef: MatDialogRef<OverlayComponent>;
@@ -19,30 +25,37 @@ export class EditComponentComponent {
     this.params = params;
   }
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) {
+  constructor(private httpClient: HttpClient,
+    public dialog: MatDialog,
+    private _modalService: NgbModal) {
 
   }
 
   onDelete() {
-    // console.log(this.params.api)
     var selectedData = [];
     selectedData.push(this.params.node.data);
-    // console.log(this.params.node.data) //this.params.node.rowIndex
-    this.params.api.updateRowData({ remove: selectedData });
 
-    /* Create a key array with all the selected keys to send as parameter to endpoint */
-    var keys = this.params.node.data['id']
+    this.modalRef = this._modalService.open(ConfirmComponent);
+    this.modalRef.result.then(res => {
+      console.log(res)
+      if (res == 'Ok click') {
+        this.params.api.updateRowData({ remove: selectedData });
+        /* Create a key array with all the selected keys to send as parameter to endpoint */
+        var keys = this.params.node.data['id']
 
-    var url = "http://localhost:3000/details/" + keys
-    /* HTTP DELETE */
-    this.httpClient.delete(url)
-      .subscribe(
-        result => {
-          // alert("Successfully Deleted");
-          // console.log(result)
-        },
-        err => console.error(err)
-      );
+        var url = "http://localhost:3000/details/" + keys
+        /* HTTP DELETE */
+        this.httpClient.delete(url)
+          .subscribe(
+            result => {
+              alert("Successfully Deleted");
+            },
+            err => console.error(err)
+          );
+      }
+    }, (reason) => {
+      console.log(reason);
+    })
   }
 
   onEdit() {
@@ -67,40 +80,18 @@ export class EditComponentComponent {
         arr['Contact Number'] = name['phone']
         arr['Contact Email'] = name['email']
         arr['Headquarters'] = name['headquaters']
-        arr['Revenue Costs'] = name['revenue_costs']
+        arr['Revenue Cost'] = name['revenue_costs']
         arr['Gross Profit'] = name['profit']
         arr['Status'] = name['status']
         arr['Acquisition Year'] = name['acquisitionYear']
         arr['Payment'] = name['valuePayment']
         arr['Price'] = name['price']
 
-        // let a = [];
-        // a.push(arr);
-        // console.log(this.params.node)
-        // // this.params.api.updateRowData({update: a});
-
-        // let id = this.params.node.data
-
         var rowNode = this.params.node
-        // console.log(rowNode)
         rowNode.setData(arr)
-        // console.log(this.params.api.getRowNode(id))
         this.postDataToServe(arr);
       });
   }
-
-  // setDataOnFord() {
-  //   var rowNode = this.gridApi.getRowNode("bb");
-  //   var newPrice = Math.floor(Math.random() * 100000);
-  //   var newModel = "T-" + Math.floor(Math.random() * 1000);
-  //   var newData = {
-  //     id: "bb",
-  //     make: "Ford",
-  //     model: newModel,
-  //     price: newPrice
-  //   };
-  //   rowNode.setData(newData);
-  // }
 
   postDataToServe(da) {
     var keys = this.params.node.data['id']
@@ -110,7 +101,8 @@ export class EditComponentComponent {
     // console.log(url)
     this.httpClient.put(url, da
     ).subscribe(response => {
-      // console.log(response)
+      alert("Successfully Edited");
+
     })
   }
 

@@ -1,58 +1,5 @@
 {
-  "details": [{
-      "id": "NA-41-hz",
-      "Company Name": "Hessel Group_edit",
-      "Industry": "Capital Goods",
-      "Contact Person": "Sawyer edit",
-      "Contact Number": "568-452-5697",
-      "Contact Email": "shallgough0@noaa.gov",
-      "Headquarters": "Arizona",
-      "Revenue Costs": null,
-      "Gross Profit": "84%",
-      "Status": "Terminated",
-      "Acquisition Year": null,
-      "Payment": null,
-      "Price": "$618.24M"
-    },
-    {
-      "id": "LS-93-wj",
-      "Company Name": "Stokes-Kuphal",
-      "Industry": "Consumer Services",
-      "Contact Person": "Shelley Kenford",
-      "Contact Number": "339-794-4226",
-      "Contact Email": "skenford1@amazon.com",
-      "Headquarters": "Kasina Wielka",
-      "Price": "$782.71M",
-      "Revenue Cost": "$110182.03",
-      "Gross Profit": "18%",
-      "Status": "Proposed"
-    },
-    {
-      "id": "ZS-90-hp",
-      "Company Name": "Bernier Group",
-      "Industry": "Capital Goods",
-      "Contact Person": "Beauregard Devita",
-      "Contact Number": "428-341-9249",
-      "Contact Email": "bdevita2@earthlink.net",
-      "Headquarters": "Kushk",
-      "Price": "$2.71B",
-      "Revenue Cost": "$234446.62",
-      "Gross Profit": "35%",
-      "Status": "Researching"
-    },
-    {
-      "id": "WX-49-ni",
-      "Company Name": "Swift-Trantow",
-      "Industry": "Consumer Services",
-      "Contact Person": "Hildagarde Dunbobin",
-      "Contact Number": "106-905-3540",
-      "Contact Email": "hdunbobin3@blogs.com",
-      "Headquarters": "Arosbaya",
-      "Price": "$463.09M",
-      "Revenue Cost": "$164058.31",
-      "Gross Profit": "16%",
-      "Status": "Proposed"
-    },
+  "details": [
     {
       "id": "GL-50-gy",
       "Company Name": "Harber-Price",
@@ -13402,6 +13349,21 @@
       "Revenue Cost": "$692180.86",
       "Gross Profit": "92%",
       "Status": "Researching"
+    },
+    {
+      "id": "KN-48-ug",
+      "Company Name": "XYZ",
+      "Industry": "Finance",
+      "Contact Person": "Pakku R",
+      "Contact Number": "673-987-3678",
+      "Contact Email": "p@h.com",
+      "Headquarters": "Georgia",
+      "Revenue Cost": "4M",
+      "Gross Profit": "78%",
+      "Status": "Approved",
+      "Acquisition Year": "2019-09-18T04:00:00.000Z",
+      "Payment": "Bonds",
+      "Price": "5M"
     }
   ]
 }
