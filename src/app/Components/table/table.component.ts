@@ -11,24 +11,12 @@ import { EditComponentComponent } from '../edit-component/edit-component.compone
 import { StatusComponent } from '../status/status.component';
 import { DataService } from "../../data.service";
 
-/* SVG Icons */
-import { faTable } from '@fortawesome/free-solid-svg-icons';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faGripLinesVertical } from '@fortawesome/free-solid-svg-icons';
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  faTable = faTable;
-  faFilter = faFilter;
-  faTimes = faTimes;
-  faPlus = faPlus;
-  faGripLinesVertical = faGripLinesVertical;
 
   public totalNumOfRows: number;
   columnDefs;
@@ -61,7 +49,7 @@ export class TableComponent implements OnInit {
         headerName: "",
         cellRendererFramework: EditComponentComponent,
         colId: "edit",
-        width: 130
+        width: 80
       },
       {
         headerName: 'id',
@@ -165,7 +153,7 @@ export class TableComponent implements OnInit {
     this.paramsVal = params
     this.api = params.api;
 
-    this.http.get("http://localhost:3000/details").subscribe(response => {
+    this.dataService.getData().subscribe(response => {
       this.data = response;
       [this.colNames, this.industryList] = getData(this.data);
 

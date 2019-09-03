@@ -2,3 +2,21 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.k-tabstrip>.k-content {
+  border-color: #fff !important;
+  color: black;
+  background-color: #fff;
+}
+
+.k-tabstrip-items .k-item {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+
+.k-tabstrip-top>.k-tabstrip-items .k-item.k-state-active {
+  border-bottom-color: transparent;
+  font-weight: bold;
+  color: black;
+}

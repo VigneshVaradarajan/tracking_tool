@@ -1,0 +1,19 @@
+<div>
+  <div style="display: inline-flex">
+    <fa-icon [icon]="faDrawPolygon"></fa-icon>
+    <p>CompanyX</p>
+  </div>
+
+  <!-- nav -->
+  <div style="float: right" *ngIf="currentUser">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/home/details">Details</a>
+        <a class="nav-item nav-link" routerLink="/home/analytics">Analytics</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </div>
+    </nav>
+  </div>
+
+</div>

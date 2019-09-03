@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class DataService {
   currentMessage = this.messageSource.asObservable();
   industryList = this.listSource.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   setIndustryList(list: any) {
     this.listSource.next(list);
@@ -20,5 +21,9 @@ export class DataService {
 
   changeMessage(message: string) {
     this.messageSource.next(message)
+  }
+
+  getData() {
+    return this.http.get("http://localhost:3000/details")
   }
 }

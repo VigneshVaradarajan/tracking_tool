@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './Components/table/table.component';
 import { OverlayComponent } from './Components/overlay/overlay.component';
 // import { DialogComponent } from './Components/dialog/dialog.component';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+
 
 import { AgGridModule } from 'ag-grid-angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule, MatMenuModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule } from '@angular/material';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDialogModule, MatMenuModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LayoutModule } from '@progress/kendo-angular-layout';
@@ -24,6 +26,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { StatusComponent } from './Components/status/status.component';
 import { LoginComponent } from './Components/login/login.component';
+import { backendProvider } from './_helpers/back-end';
+import { HomeComponent } from './Components/home/home.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { AngularSplitModule } from 'angular-split';
+import { HeaderComponent } from './Components/header/header.component';
+import { AnalyticsComponent } from './Components/analytics/analytics.component';
+import { ChartsModule } from 'ng2-charts';
+import { ProfitComponent } from './Components/analytics/profit/profit.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +43,11 @@ import { LoginComponent } from './Components/login/login.component';
     EditComponentComponent,
     StatusComponent,
     LoginComponent,
+    HomeComponent,
+    RegisterComponent,
+    HeaderComponent,
+    AnalyticsComponent,
+    ProfitComponent,
     // DialogComponent
   ],
   imports: [
@@ -55,12 +70,19 @@ import { LoginComponent } from './Components/login/login.component';
     MatExpansionModule,
     MatMenuModule,
     MatCheckboxModule,
+    MatCardModule,
     // SimpleModalModule.forRoot({ container: "modal-container" }),
     FontAwesomeModule,
-    PopupModule
+    PopupModule,
+    AngularSplitModule.forRoot(),
+    ChartsModule
   ],
   entryComponents: [OverlayComponent],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    backendProvider
+  ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

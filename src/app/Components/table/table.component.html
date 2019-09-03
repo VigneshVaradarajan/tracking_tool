@@ -1,16 +1,17 @@
 <h5>Acquisition Details</h5>
 <div class="subtext">
-  <fa-icon [icon]="faTable"></fa-icon>
+  <i class="fas fa-table fa-2x"></i>
   <p> Rows : {{totalNumOfRows}}</p>
 </div>
 
+
 <div class="toolIcons">
   <button type="button" class="btn btn-secondary mainButton rightFloat" (click)="onAdd()" [disabled]="noData">
-    <fa-icon [icon]="faPlus"></fa-icon>
+    <i class="fas fa-plus"></i>
   </button>
 
   <button type="button" class="btn btn-secondary mainButton rightFloat" [matMenuTriggerFor]="menu">
-    <fa-icon [icon]="faGripLinesVertical"></fa-icon>
+    <i class="fas fa-grip-vertical"></i>
   </button>
 
   <mat-menu #menu="matMenu">
@@ -24,7 +25,7 @@
   </ng-template>
   <button type="button" class="btn btn-secondary mainButton rightFloat popovers" [ngbPopover]="popContent"
     [autoClose]="'outside'" [popoverTitle]="">
-    <fa-icon [icon]="faFilter"> </fa-icon>
+    <i class="fas fa-filter"></i>
   </button>
 </div>
 

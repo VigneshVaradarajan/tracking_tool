@@ -1,0 +1,30 @@
+.bgImage {
+  padding-top: 10px;
+  height: 100vh;
+  color: black;
+  background-image: url(../../../assets/images/home_bg_1.jpg);
+  margin: 0 auto;
+
+  p {
+    color: white;
+    font-family: 'Indie Flower';
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+.example-card {
+  max-width: 250px;
+}
+
+.blue-square {
+  // background-color: #0074D9;
+  width: 50%;
+  height: 100px;
+  margin: 10% auto;
+
+}
+
+a {
+  padding: 10% 5%;
+}

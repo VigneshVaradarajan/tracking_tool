@@ -1,1 +1,89 @@
-<p>login works!</p>
+<div style="height: 90vh; background-color: rgb(112, 103, 103);color: rgb(7, 0, 0)">
+  <as-split direction="horizontal">
+    <as-split-area size=60>
+      <as-split direction="vertical">
+        <as-split-area size=20>
+          <div>
+            <ngb-carousel #carousel interval="1000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
+              <ng-template ngbSlide *ngFor="let img of images; index as i">
+                <div class="carousel-caption">
+                </div>
+                <div class="picsum-img-wrapper">
+                  <img [src]="img" alt="My image {{i + 1}} description">
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+        </as-split-area>
+        <as-split-area size=80>
+          <div style="margin-top:10%;margin-left: 2%">
+            <h6>Welcome to CompanyX!</h6>
+            <div style="margin-top: 5%;display: inline-flex">
+              <div style="width: 400px">
+                <p> Already an admin? <strong>Login.</strong></p>
+                <p> No?? <strong>Register !!!!</strong> </p>
+              </div>
+              <div style="margin-left: 2%">
+                <fa-icon [icon]="faArrowCircleRight"></fa-icon>
+              </div>
+            </div>
+
+          </div>
+        </as-split-area>
+      </as-split>
+
+    </as-split-area>
+    <as-split-area>
+      <div class="jumbotron"
+        style="background-color: rgb(112, 103, 103);color: rgb(7, 0, 0);  box-shadow: none !important;">
+        <div class=" container">
+          <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+              <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+              <div *ngIf="success" class="alert alert-success">{{success}}</div>
+
+              <div>
+                <h2>Login</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required" style="color: black">Username is required!</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required" style="color: black">Password is required!</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary" cz>
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Login
+                    </button>
+                    <a routerLink="/register" class="btn btn-link" style="color: black" (click)="register()">
+                      Register</a>
+                    <!-- <a class="btn btn-link" style="color: black" (click)="register()"> Register</a> -->
+                  </div>
+                </form>
+              </div>
+              <!-- <div *ngIf="registerBool">
+                <app-register></app-register>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </as-split-area>
+  </as-split>
+
+</div>

@@ -19,7 +19,6 @@ h5 {
 .toolIcons {
   .popovers {
     padding: 0.3rem 0.6rem !important;
-    margin-right: 2%;
   }
 
   .rightFloat {
@@ -97,24 +96,16 @@ h5 {
   border-right: 1px solid #aaa;
 }
 
+button:nth-child {
+  .icons {
+    svg {
+      width: 0.9em !important;
+      height: 0.9em !important;
+    }
+  }
 
-// .content {
-//   padding: 30px;
-//   color: #787878;
-//   background-color: #fcf7f8;
-//   border: 1px solid rgba(0, 0, 0, .05);
-// }
+}
 
 
 
-
-// .btn-primary {
-//   margin-top: 10px;
-//   box-shadow: none !important;
-//   background-color: cornflowerblue !important;
-//   border: 1px solid black !important;
-
-//   &:hover {
-//     background-color: deepskyblue !important;
-//   }
-// }
+// body > app-root > div > app-table > ag-grid-angular > div > div.ag-root-wrapper-body.ag-layout-normal > div > div.ag-body-viewport.ag-layout-normal.ag-row-no-animation > div.ag-center-cols-clipper > div > div > div.ag-row.ag-row-no-focus.ag-row-even.ag-row-level-0.ag-row-position-absolute.ag-row-first > div:nth-child(3) > app-status > p > ngb-progressbar > div > div
