@@ -1,8 +1,12 @@
+p {
+  margin-top: 5px;
+}
+
 ngb-progressbar {
   margin-top: 5rem;
 }
 
-.progressbar {
+::ng-deep .progress-bar {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 0px !important;
+  font-size: x-small !important;
 }

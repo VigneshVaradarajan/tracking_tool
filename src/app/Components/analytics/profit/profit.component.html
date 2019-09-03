@@ -1,19 +1,5 @@
-<!-- <div>
-  <div style="display: block">
-    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-      [legend]="barChartLegend" [chartType]="barChartType">
-    </canvas>
-  </div>
-</div> -->
-
-<!-- <div class="container">
-  <div class="col-sm-4 text-center">
-    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-      [options]="pieChartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-  </div>
-</div> -->
-
 <div class="container" *ngIf="this.chartType == 'status'">
+
   <h5>Acquisition Status</h5>
   <div class="card-body">
     <canvas id="canvas_status" style="height: 400px !important ;width:1000px !important"></canvas>

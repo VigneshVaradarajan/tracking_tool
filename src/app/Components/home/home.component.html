@@ -1,12 +1,12 @@
 <div class="bgImage">
-  <p>With great power, comes great responsibility!
+  <p class="header">With great power, comes great responsibility!
   </p>
 
-  <div class="blue-square">
-    <a routerLink="/home/details" class="btn btn-link" style="color: black">
+  <div class="center-align">
+    <a routerLink="/home/details" class="btn btn-link color">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar style="margin-left: 5px;">
+          <div mat-card-avatar class="margin-div">
             <fa-icon mat-card-image [icon]="faTable"></fa-icon>
           </div>
           <mat-card-title>Details</mat-card-title>
@@ -14,17 +14,17 @@
         </mat-card-header>
 
         <mat-card-content>
-          <p style="color: black">
-            Contains details like which company was acquired when and for how much and so on.
+          <p class="content">
+            Contains details about the aquired/aquiring company.
           </p>
         </mat-card-content>
       </mat-card>
     </a>
 
-    <a routerLink="/home/analytics" class="btn btn-link" style="color: black">
+    <a routerLink="/home/analytics" class="btn btn-link color">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar style="margin-left: 5px;">
+          <div mat-card-avatar class="margin-div">
             <fa-icon mat-card-image [icon]="faChartBar"></fa-icon>
           </div>
           <mat-card-title>Analytics</mat-card-title>
@@ -32,8 +32,8 @@
         </mat-card-header>
 
         <mat-card-content>
-          <p style="color: black">
-            Contains details like which company was acquired when and for how much and so on.
+          <p class="content">
+            Displays graphs to help understand the data better.
           </p>
         </mat-card-content>
       </mat-card>

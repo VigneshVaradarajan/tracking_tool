@@ -1,11 +1,11 @@
-<div>
-  <div style="display: inline-flex">
+<div class="main-div">
+  <div class="sub-div">
     <fa-icon [icon]="faDrawPolygon"></fa-icon>
     <p>CompanyX</p>
   </div>
 
   <!-- nav -->
-  <div style="float: right" *ngIf="currentUser">
+  <div class="nav-div" *ngIf="loggedInUser">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>

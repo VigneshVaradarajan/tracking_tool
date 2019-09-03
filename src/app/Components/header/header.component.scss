@@ -3,13 +3,24 @@
   height: 3.5em !important;
 }
 
-p {
-  margin-top: 15px !important;
-  font-family: 'Source Sans Pro';
-  font-weight: bold;
-}
+.main-div {
+  .sub-div {
+    display: inline-flex;
+  }
 
-.navbar-expand .navbar-nav .nav-link {
-  padding-right: 3rem;
-  padding-left: 3rem;
+  p {
+    margin-top: 15px !important;
+    font-family: 'PT Sans';
+    font-weight: bold;
+  }
+
+  .nav-div {
+    float: right
+  }
+
+  .navbar-expand .navbar-nav .nav-link {
+    font-family: 'PT Sans';
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
 }

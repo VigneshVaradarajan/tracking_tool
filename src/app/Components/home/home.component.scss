@@ -5,26 +5,48 @@
   background-image: url(../../../assets/images/home_bg_1.jpg);
   margin: 0 auto;
 
-  p {
+  .center-align {
+    width: 50%;
+    height: 100px;
+    margin: 10% auto;
+
+    .example-card {
+      max-width: 250px;
+    }
+
+    .content {
+      color: black;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .color {
+      color: black;
+    }
+
+    mat-card-title,
+    mat-card-subtitle {
+      font-family: 'Livvic' !important;
+    }
+  }
+
+  .header {
     color: white;
-    font-family: 'Indie Flower';
+    font-family: 'Livvic';
     font-size: 1.5em;
     text-align: center;
   }
-}
 
-.example-card {
-  max-width: 250px;
-}
+  .margin-div {
+    margin-left: 5px;
+  }
 
-.blue-square {
-  // background-color: #0074D9;
-  width: 50%;
-  height: 100px;
-  margin: 10% auto;
+  a {
+    padding: 10% 5%;
 
-}
-
-a {
-  padding: 10% 5%;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

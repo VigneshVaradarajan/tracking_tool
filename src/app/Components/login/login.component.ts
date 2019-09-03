@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   loading = false;
-  submitted = false;
+  submit = false;
   returnUrl: string;
-  error: string;
-  success: string;
+  errorMsg: string;
+  successMsg: string;
 
-  images = ['../../../assets/images/bg_1.png', '../../../assets/images/bg_2.png', '../../../assets/images/bg_3.jpg', '../../../assets/images/bg_4.jpg']
-
+  /* Array of images for the carousel*/
+  images = ['../../../assets/images/bg_1.png', '../../../assets/images/bg_2.png', '../../../assets/images/bg_3.jpg', '../../../assets/images/bg_4.jpg'];
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   public registerBool: boolean = false;
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
+  /* Functions for carousel toggle and slide */
   togglePaused() {
     if (this.paused) {
       this.carousel.cycle();
@@ -54,12 +55,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private auth: AuthenticationService
   ) {
-    // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
+    /* Will route to the home page if admin is already logged in */
+    if (this.auth.currentUserValue) {
       this.router.navigate(['/']);
     }
   }
@@ -70,39 +71,38 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // query param from the url
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
 
     // show success message on registration
-    if (this.route.snapshot.queryParams['registered']) {
-      this.success = 'Registration successful';
+    if (this.activatedRoute.snapshot.queryParams['registered']) {
+      this.successMsg = 'Yayy!! Successfully registered!!';
     }
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  // getter for the form fields
+  get form() { return this.loginForm.controls; }
 
   onSubmit() {
-    this.submitted = true;
+    this.submit = true;
 
-    // reset alerts on submit
-    this.error = null;
-    this.success = null;
+    this.errorMsg = null;
+    this.successMsg = null;
 
-    // stop here if form is invalid
+    // return if form invalid
     if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.auth.login(this.form.username.value, this.form.password.value)
       .pipe(first())
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.error = error;
+          this.errorMsg = error;
           this.loading = false;
         });
   }

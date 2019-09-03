@@ -13,21 +13,21 @@ export class HeaderComponent implements OnInit {
 
   faDrawPolygon = faDrawPolygon;
 
-  currentUser: any;
+  loggedInUser: any;
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private auth: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    console.log(this.currentUser)
+    //obtaining the logged in user, if any
+    this.auth.currentUser.subscribe(x => this.loggedInUser = x);
   }
 
+  /* loggin-out and routing back to the login page */
   logout() {
-    this.authenticationService.logout();
+    this.auth.logout();
     this.router.navigate(['/login']);
   }
-
 
   ngOnInit() {
 

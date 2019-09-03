@@ -1,111 +1,137 @@
-h5 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 900;
-  padding: 1% 0px 0px 1%;
-}
+.main-div {
+  background-color: rgb(112, 103, 103);
+  color: rgb(7, 0, 0);
+  height: 100vh;
 
-.subtext {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
-  padding: 0px 0px 0px 1%;
-  font-size: 0.9em;
 
-  fa-icon,
-  p {
-    display: inline;
-  }
-}
-
-.toolIcons {
-  .popovers {
-    padding: 0.3rem 0.6rem !important;
+  h5 {
+    font-family: 'Livvic';
+    font-weight: 900;
+    padding: 1% 0px 0px 1%;
+    margin-left: 1%
   }
 
-  .rightFloat {
-    float: right;
-  }
+  .subtext {
+    margin-left: 1%;
+    font-family: 'Livvic';
+    font-weight: 400;
+    padding: 0px 0px 0px 1%;
+    font-size: 0.9em;
 
-  .filter {
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.904);
-    font-family: 'Source Sans Pro';
-    font-weight: 300px;
-    margin-bottom: 10px;
-
-    &::placeholder {
-      text-align: left;
-    }
-
-    &:focus {
-      outline: none;
-      border-bottom: 2px solid rgba(122, 205, 238, 0.904) !important;
+    fa-icon,
+    p {
+      display: inline;
     }
   }
 
-  .btn {
-    &:hover {
+  .toolIcons {
+    .popovers {
+      padding: 0.3rem 0.6rem !important;
+    }
+
+    .rightFloat {
+      float: right;
+    }
+
+    .filter {
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.904);
+      font-family: 'Source Sans Pro';
+      font-weight: 300px;
+      margin-bottom: 10px;
+
+      &::placeholder {
+        text-align: left;
+      }
+
+      &:focus {
+        outline: none;
+        border-bottom: 2px solid rgba(122, 205, 238, 0.904) !important;
+      }
+    }
+
+    .btn {
+      &:hover {
+        box-shadow: none !important;
+      }
+    }
+
+    .btn-secondary {
       box-shadow: none !important;
+      background-color: white !important;
+      border: 1px solid black !important;
+      color: black;
+
+      &:hover {
+        border: 1px solid deepskyblue !important;
+      }
+
+      &:focus,
+      &:not([disabled]):not(.disabled):active,
+      &:not([disabled]):not(.disabled).active {
+        background-color: cornflowerblue !important;
+        color: white;
+      }
     }
   }
 
-  .btn-secondary {
-    // margin-top: 10px;
-    box-shadow: none !important;
-    background-color: white !important;
-    border: 1px solid black !important;
+  .mainButton {
+    margin-left: 5px;
+    margin-right: 15px;
+    height: 4%;
+    padding: 0.3rem 0.6rem !important;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    border-radius: 5px;
+  }
+
+  .aggrid {
+    // width: 100%;
+    height: 350px;
+    margin-top: 4%;
+    margin-left: 1%;
+    margin-right: 1%
+  }
+
+  .ag-theme-balham {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 300 !important;
+  }
+
+  ::ng-deep .ag-theme-balham .ag-header {
     color: black;
+    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+  }
 
-    &:hover {
-      border: 1px solid deepskyblue !important;
+  ::ng-deep .ag-theme-balham .ag-ltr .ag-cell {
+    border-right: 1px solid #aaa;
+  }
+
+  button:nth-child {
+    .icons {
+      svg {
+        width: 0.9em !important;
+        height: 0.9em !important;
+      }
     }
 
-    &:focus,
-    &:not([disabled]):not(.disabled):active,
-    &:not([disabled]):not(.disabled).active {
-      background-color: cornflowerblue !important;
-      color: white;
-    }
   }
 }
 
-.mainButton {
-  margin-left: 5px;
-  margin-right: 15px;
-  height: 4%;
-  padding: 0.3rem 0.6rem !important;
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 300;
-  border-radius: 5px;
+
+// Background border
+.mat-checkbox .mat-checkbox-frame {
+  border-color: red;
+  background-color: black
 }
 
-
-.ag-theme-balham {
-  font-family: 'Source Sans Pro', sans-serif !important;
-  font-weight: 300 !important;
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 18px;
+  height: 18px;
 }
-
-::ng-deep .ag-theme-balham .ag-header {
-  color: black;
-  font-weight: bold;
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: center;
-}
-
-::ng-deep .ag-theme-balham .ag-ltr .ag-cell {
-  border-right: 1px solid #aaa;
-}
-
-button:nth-child {
-  .icons {
-    svg {
-      width: 0.9em !important;
-      height: 0.9em !important;
-    }
-  }
-
-}
-
-
-
-// body > app-root > div > app-table > ag-grid-angular > div > div.ag-root-wrapper-body.ag-layout-normal > div > div.ag-body-viewport.ag-layout-normal.ag-row-no-animation > div.ag-center-cols-clipper > div > div > div.ag-row.ag-row-no-focus.ag-row-even.ag-row-level-0.ag-row-position-absolute.ag-row-first > div:nth-child(3) > app-status > p > ngb-progressbar > div > div

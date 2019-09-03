@@ -1,41 +1,44 @@
-<h5>Acquisition Details</h5>
-<div class="subtext">
-  <i class="fas fa-table fa-2x"></i>
-  <p> Rows : {{totalNumOfRows}}</p>
+<div class="main-div">
+  <h5>Acquisition Details</h5>
+  <div class="subtext">
+    <i class="fas fa-table fa-xs"></i>
+    <p> Rows : {{totalNumOfRows}}</p>
+  </div>
+
+
+  <div class="toolIcons">
+    <button type="button" class="btn btn-secondary mainButton rightFloat" (click)="onAdd()" [disabled]="noData">
+      <i class="fas fa-plus"></i>
+    </button>
+
+    <button type="button" class="btn btn-secondary mainButton rightFloat" [matMenuTriggerFor]="menu">
+      <i class="fas fa-grip-vertical"></i>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <mat-checkbox *ngFor="let col of colNames" id={{col}} class="mat-menu-item" (click)="$event.stopPropagation()"
+        (change)="checkCheckBoxvalue($event, col)" [checked]="true">
+        {{col}}</mat-checkbox>
+    </mat-menu>
+
+    <ng-template #popContent>
+      <input type="text" class="filter" placeholder="Filter" (keyup)="search()" [(ngModel)]="searchValue" />
+    </ng-template>
+    <button type="button" class="btn btn-secondary mainButton rightFloat popovers" [ngbPopover]="popContent"
+      [autoClose]="'outside'" [popoverTitle]="">
+      <i class="fas fa-filter"></i>
+    </button>
+  </div>
+
+
+  <ag-grid-angular class="ag-theme-balham aggrid" [rowData]="rowData" [defaultColDef]="defaultColDef"
+    (gridReady)="onGridReady($event)" [columnDefs]="columnDefs" [gridOptions]="gridOptions" [pagination]="true"
+    [paginationPageSize]="paginationPageSize">
+  </ag-grid-angular>
+
+  <!-- Alert -->
+  <alert type="success" *ngIf="show_alert" close="closeAlert()" dismissOnTimeout="3000">
+    <strong>{{message}}</strong>
+  </alert>
+
 </div>
-
-
-<div class="toolIcons">
-  <button type="button" class="btn btn-secondary mainButton rightFloat" (click)="onAdd()" [disabled]="noData">
-    <i class="fas fa-plus"></i>
-  </button>
-
-  <button type="button" class="btn btn-secondary mainButton rightFloat" [matMenuTriggerFor]="menu">
-    <i class="fas fa-grip-vertical"></i>
-  </button>
-
-  <mat-menu #menu="matMenu">
-    <mat-checkbox *ngFor="let col of colNames" id={{col}} class="mat-menu-item" (click)="$event.stopPropagation()"
-      (change)="checkCheckBoxvalue($event, col)" [checked]="true">
-      {{col}}</mat-checkbox>
-  </mat-menu>
-
-  <ng-template #popContent>
-    <input type="text" class="filter" placeholder="Search" (keyup)="search()" [(ngModel)]="searchValue" />
-  </ng-template>
-  <button type="button" class="btn btn-secondary mainButton rightFloat popovers" [ngbPopover]="popContent"
-    [autoClose]="'outside'" [popoverTitle]="">
-    <i class="fas fa-filter"></i>
-  </button>
-</div>
-
-
-<ag-grid-angular style="width: 100%; height: 350px; margin-top: 4%" class="ag-theme-balham" [rowData]="rowData"
-  [rowData]="rowData" [defaultColDef]="defaultColDef" (gridReady)="onGridReady($event)" [columnDefs]="columnDefs"
-  [gridOptions]="gridOptions" [pagination]="true" [paginationPageSize]="paginationPageSize">
-</ag-grid-angular>
-
-<!-- Alert -->
-<alert type="success" *ngIf="show_alert" close="closeAlert()" dismissOnTimeout="3000">
-  <strong>{{message}}</strong>
-</alert>

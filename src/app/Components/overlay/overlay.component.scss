@@ -1,16 +1,36 @@
-.dropDown {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-bottom: 1px solid #ced4da;
-  background-color: transparent;
-  color: gray !important;
-  padding: 10px;
+mat-dialog-title,
+h6,
+mat-panel-title {
+  font-family: 'Livvic' !important;
+}
+
+h6 {
+  float: right;
+  margin-top: -50px;
+}
+
+.input,
+mat-form-field,
+mdb-error {
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-weight: 300 !important;
   text-align: left !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 300;
+  font-size: 0.8rem !important;
+}
+
+::placeholder {
+  font-size: 0.6rem !important;
 }
 
 .example-full-width {
   width: 100%;
+}
+
+mdb-error {
+  margin-left: 1% !important;
+  font-size: 0.6rem !important;
+}
+
+.mat-form-field-flex {
+  border-bottom: black !important
 }

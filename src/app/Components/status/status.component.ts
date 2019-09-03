@@ -9,15 +9,16 @@ export class StatusComponent implements OnInit {
 
   private params: any;
   public value: number;
-  public type: string
+  public type: string;
+
   agInit(params: any): void {
     this.params = params;
-    console.log(this.params.value)
   }
 
   constructor() { }
 
   ngOnInit() {
+    /* The different Acquisition status */
     if (this.params.value === 'Approved') {
       this.value = 100;
       this.type = "success";

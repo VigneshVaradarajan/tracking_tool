@@ -39,8 +39,6 @@ export class OverlayComponent implements OnInit {
 
   phonePattern = /^\d{3}-\d{3}-\d{4}$/
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  // startDate = new Date(1990, 0, 1);
-  // startView = 'multi-year';
   date: { year: number, month: number };
   statusGroupInitial = false;
 

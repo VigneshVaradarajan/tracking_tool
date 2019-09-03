@@ -1,47 +1,38 @@
 <div class="bgImage">
-  <!-- <p>With great power, comes great responsibility!
-            </p> -->
-  <div class="blue-square">
-    <a [routerLink]="['/home/analytics/status']" [queryParams]="{type: 'status'}" class="btn btn-link"
-      style="color: black">
+  <div class="center-align">
+    <a [routerLink]="['/home/analytics/status']" [queryParams]="{type: 'status'}" class="btn btn-link" class="color">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar style="margin-left: 5px;">
-            <!-- <fa-icon mat-card-image [icon]="faTable"></fa-icon> -->
+            <fa-icon mat-card-image [icon]="faChartPie"></fa-icon>
           </div>
           <mat-card-title>Status</mat-card-title>
           <mat-card-subtitle>Aquired Companies</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p style="color: black">
-            Which company has been acquired or is still in other stages of acquiring.
+          <p class="color">
+            Companies that has been acquired/still in other stages of acquiring.
           </p>
         </mat-card-content>
       </mat-card>
     </a>
 
-    <a [routerLink]="['/home/analytics/status']" [queryParams]="{type: 'year'}" class="btn btn-link"
-      style="color: black">
+    <a [routerLink]="['/home/analytics/status']" [queryParams]="{type: 'year'}" class="btn btn-link" class="color">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar style="margin-left: 5px;">
-            <!-- <fa-icon mat-card-image [icon]="faTable"></fa-icon> -->
+            <fa-icon mat-card-image [icon]="faChartBar"></fa-icon>
           </div>
           <mat-card-title>Year</mat-card-title>
           <mat-card-subtitle>Acquisition Details</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-content>
-          <p style="color: black">
-            Contains details like which company was acquired when and for how much and so on.
+          <p class="color">
+            The years during which various companies were acquired.
           </p>
         </mat-card-content>
       </mat-card>
     </a>
-
   </div>
-
-
 </div>
-
-<app-sidebar></app-sidebar>
