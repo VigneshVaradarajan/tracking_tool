@@ -21,3 +21,21 @@
 .example-full-width {
   width: 100%;
 }
+
+.k-tabstrip>.k-content {
+  border-color: #fff !important;
+  color: black !important;
+  background-color: #fff !important;
+}
+
+.k-tabstrip-items .k-item {
+  font-family: 'Source Sans Pro', sans-serif !important;
+  color: black !important;
+  font-weight: 300 !important;
+}
+
+.k-tabstrip-top>.k-tabstrip-items .k-item.k-state-active {
+  border-bottom-color: transparent !important;
+  font-weight: bold !important;
+  color: black !important;
+}

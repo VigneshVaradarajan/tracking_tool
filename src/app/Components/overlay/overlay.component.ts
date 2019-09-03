@@ -3,15 +3,14 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { DataService } from "../../data.service";
+import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 declare var require: any;
 const RandExp = require('randexp');
 var UsaStates = require('usa-states').UsaStates;
-
-/* Validation function for Key field */
-function phoneFormat(control: FormControl) {
-
-}
 
 @Component({
   selector: 'app-overlay',
@@ -20,12 +19,16 @@ function phoneFormat(control: FormControl) {
 })
 
 export class OverlayComponent implements OnInit {
+  faUserCircle = faUserCircle;
+
+  model: NgbDateStruct;
+  today = this.calendar.getToday();
 
   public acquisitionID: string;
   public stateNames = [];
   public industryList = [];
   addForm: FormGroup;
-
+  message: string;
   statusOptions: string[] = ['Researching', 'Proposed', 'Pending', 'Approved', 'Terminated'];
   paymentOptions: string[] = ['Cash', 'Bonds', 'Stocks', 'Undisclosed']
 
@@ -38,51 +41,70 @@ export class OverlayComponent implements OnInit {
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   startDate = new Date(1990, 0, 1);
   startView = 'multi-year';
+  statusGroupInitial = false;
 
   /* Creating the form using the FormBuilder service provided by Angular. */
-  createFormGroupWithBuilder(formBuilder: FormBuilder) {
+  createFormGroupWithBuilder(formBuilder: FormBuilder, data) {
     return formBuilder.group({
-      company_name: ['', Validators.required],
-      headquaters: ['', Validators.required],
-      industry: ['', Validators.required],
+      company_name: [data.length == 0 ? '' : data['Company Name'], Validators.required],
+      headquaters: [data.length == 0 ? '' : data['Headquarters']],
+      industry: [data.length == 0 ? '' : data['Industry']],
       // contact_details: formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      firstName: [data.length == 0 ? '' : data['Contact Person'].split(" ")[0], Validators.required],
+      lastName: [data.length == 0 ? '' : data['Contact Person'].split(" ")[1], Validators.required],
+      phone: [data.length == 0 ? '' : data['Contact Number'],
+      [Validators.required, Validators.pattern(this.phonePattern)]
+      ],
+      email: [data.length == 0 ? '' : data['Contact Email'],
+      [Validators.required, Validators.pattern(this.emailPattern)]
+      ],
       // }),
       // financial: formBuilder.group({
-      revenue: ['', Validators.required],
-      revenue_costs: ['', Validators.required],
-      profit: ['', Validators.required],
-      price: ['', Validators.required],
+      // revenue: [data.length == 0 ? '' : data['Company Name'], Validators.required],
+      revenue_costs: [data.length == 0 ? '' : data['Revenue Cost'], Validators.required],
+      profit: [data.length == 0 ? '' : data['Gross Profit'], Validators.required],
+      price: [data.length == 0 ? '' : data['Price'], Validators.required],
       // }),
-      status: ['', Validators.required],
-      acquisitionYear: ['', Validators.required],
-      valuePayment: ['', Validators.required]
+      status: [data.length == 0 ? '' : data['Status'], Validators.required],
+      acquisitionYear: [data.length == 0 ? '' : data['Acquisition Year'], Validators.required],
+      valuePayment: [data.length == 0 ? '' : data['Payment'], Validators.required]
     });
   }
 
   getErrorMessage() {
-    console.log(this.status.hasError('required'))
     return this.status.hasError('required') ? 'You must enter a value' : 'jhujgf';
   }
 
   constructor(
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private dialogRef: MatDialogRef<OverlayComponent>) {
+    private dialogRef: MatDialogRef<OverlayComponent>,
+    private dataService: DataService,
+    private calendar: NgbCalendar) {
     if (data) {
-      this.industryList = data;
+      // this.industryList = data;
+      // console.log(data)
+      this.data = data
+    }
+    else {
+      // console.log(data)
+      this.data = undefined
     }
     var usStates = new UsaStates();
     this.stateNames = usStates.arrayOf('names');
-    this.addForm = this.createFormGroupWithBuilder(formBuilder)
+    this.addForm = this.createFormGroupWithBuilder(formBuilder, this.data)
   }
 
   ngOnInit() {
     let rand: string = new RandExp(/[A-Z]{2}/g).gen() + "-" + new RandExp(/[0-9]{2}/g).gen() + "-" + new RandExp(/[a-z]{2}/).gen();
-    this.acquisitionID = rand;
+    this.acquisitionID = this.data.length == 0 ? rand : this.data['id'];
+
+    // this.data.currentMessage.subscribe(message => this.message = message)
+    this.dataService.industryList.subscribe(msg => {
+      // console.log("sibling")
+      // console.log(msg)
+      this.industryList = msg;
+    })
 
     this.filteredOptionsStates = this.headquaters.valueChanges
       .pipe(
@@ -107,8 +129,8 @@ export class OverlayComponent implements OnInit {
         map(value => this._filterPayment(value))
       );
 
+    this.formControlValueChanged();
   }
-
 
   private _filterStates(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -132,6 +154,22 @@ export class OverlayComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.paymentOptions.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  formControlValueChanged() {
+
+    this.status.valueChanges.subscribe((mode: string) => {
+      console.log(mode)
+      if (mode === 'Approved') {
+        document.getElementById('statusGroup').hidden = false;
+        this.statusGroupInitial = true;
+      }
+      else {
+        document.getElementById('statusGroup').hidden = true;
+        this.statusGroupInitial = false;
+      }
+    })
+
   }
 
   get company_name() {
@@ -194,7 +232,11 @@ export class OverlayComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addForm.value)
-    console.log(this.headquaters.value)
+    // console.log(this.addForm.value)
+    // console.log(this.headquaters.value)
+    let arrayToSend = [];
+    arrayToSend = (this.addForm.value)
+    arrayToSend['Acquisition ID'] = this.acquisitionID;
+    this.dialogRef.close(arrayToSend);
   }
 }

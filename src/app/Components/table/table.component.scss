@@ -1,8 +1,79 @@
+h5 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  padding: 1% 0px 0px 1%;
+}
+
+.subtext {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  padding: 0px 0px 0px 1%;
+  font-size: 0.9em;
+
+  fa-icon,
+  p {
+    display: inline;
+  }
+}
+
+.toolIcons {
+  .popovers {
+    padding: 0.3rem 0.6rem !important;
+    margin-right: 2%;
+  }
+
+  .rightFloat {
+    float: right;
+  }
+
+  .filter {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.904);
+    font-family: 'Source Sans Pro';
+    font-weight: 300px;
+    margin-bottom: 10px;
+
+    &::placeholder {
+      text-align: left;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid rgba(122, 205, 238, 0.904) !important;
+    }
+  }
+
+  .btn {
+    &:hover {
+      box-shadow: none !important;
+    }
+  }
+
+  .btn-secondary {
+    // margin-top: 10px;
+    box-shadow: none !important;
+    background-color: white !important;
+    border: 1px solid black !important;
+    color: black;
+
+    &:hover {
+      border: 1px solid deepskyblue !important;
+    }
+
+    &:focus,
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active {
+      background-color: cornflowerblue !important;
+      color: white;
+    }
+  }
+}
+
 .mainButton {
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 15px;
   height: 4%;
-  padding: 0.2rem 0.3rem !important;
+  padding: 0.3rem 0.6rem !important;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
@@ -10,38 +81,40 @@
 }
 
 
-.btn-primary {
-  margin-top: 10px;
-  box-shadow: none !important;
-  background-color: cornflowerblue !important;
-  border: 1px solid black !important;
-
-  &:hover {
-    background-color: deepskyblue !important;
-  }
+.ag-theme-balham {
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-weight: 300 !important;
 }
 
-.btn-secondary {
-  margin-top: 10px;
-  box-shadow: none !important;
-  background-color: white !important;
-  border: 1px solid black !important;
+::ng-deep .ag-theme-balham .ag-header {
   color: black;
-
-  &:hover {
-    border: 1px solid deepskyblue !important;
-  }
-
-  &:focus,
-  &:not([disabled]):not(.disabled):active,
-  &:not([disabled]):not(.disabled).active {
-    background-color: cornflowerblue !important;
-    color: white;
-  }
+  font-weight: bold;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
 }
 
-.btn {
-  &:hover {
-    box-shadow: none !important;
-  }
+::ng-deep .ag-theme-balham .ag-ltr .ag-cell {
+  border-right: 1px solid #aaa;
 }
+
+
+// .content {
+//   padding: 30px;
+//   color: #787878;
+//   background-color: #fcf7f8;
+//   border: 1px solid rgba(0, 0, 0, .05);
+// }
+
+
+
+
+// .btn-primary {
+//   margin-top: 10px;
+//   box-shadow: none !important;
+//   background-color: cornflowerblue !important;
+//   border: 1px solid black !important;
+
+//   &:hover {
+//     background-color: deepskyblue !important;
+//   }
+// }

@@ -8,27 +8,41 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './Components/table/table.component';
 import { OverlayComponent } from './Components/overlay/overlay.component';
+// import { DialogComponent } from './Components/dialog/dialog.component';
 
 import { AgGridModule } from 'ag-grid-angular';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule } from '@angular/material';
+import { MatDialogModule, MatMenuModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditComponentComponent } from './Components/edit-component/edit-component.component';
+// import { SimpleModalModule } from 'ngx-simple-modal';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PopupModule } from '@progress/kendo-angular-popup';
+import { StatusComponent } from './Components/status/status.component';
+import { LoginComponent } from './Components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    OverlayComponent
+    OverlayComponent,
+    EditComponentComponent,
+    StatusComponent,
+    LoginComponent,
+    // DialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgbModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([EditComponentComponent, StatusComponent]),
     HttpClientModule,
     MatDialogModule,
     LayoutModule,
@@ -38,6 +52,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    // SimpleModalModule.forRoot({ container: "modal-container" }),
+    FontAwesomeModule,
+    PopupModule
   ],
   entryComponents: [OverlayComponent],
   providers: [],
